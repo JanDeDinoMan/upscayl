@@ -50,7 +50,7 @@ jobs:
         run: |
           yarn
           npm install
-          yarn gulp dist --platforms=linux32,linux64
+          npm run dist
       - name: Build App [windows]
         if: matrix.os == 'windows-latest'
         run: |
