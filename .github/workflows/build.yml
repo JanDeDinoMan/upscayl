@@ -62,7 +62,9 @@ jobs:
 
       - name: Upload artifacts
         uses: actions/upload-artifact@master
+        env:
+          VERSION: npm pkg get version | tr -d '"'
         with:
           name: ${{ matrix.os }}
-          path: renderer/out
+          path: dist/upscayl$VERSION.zip
 
