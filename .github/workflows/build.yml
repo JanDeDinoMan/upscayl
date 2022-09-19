@@ -32,6 +32,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 16.x
+      
+      - name: set version
+        run: echo "VERSION=$(npm pkg get version | tr -d '\"')" >> $VERSION
+
 
       - name: yarn version
         run: |
@@ -59,9 +63,6 @@ jobs:
       #     yarn gulp dist --platforms=win64
       #   env:
       #     NSIS_PATH: ${{ steps.prep_nsis.outputs.nsis-path }}
-
-      - name: set version
-          run: echo "VERSION=$(npm pkg get version | tr -d '\"')" >> $VERSION
 
       - name: Upload artifacts
         uses: actions/upload-artifact@master
