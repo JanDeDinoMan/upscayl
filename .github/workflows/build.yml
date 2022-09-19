@@ -39,27 +39,26 @@ jobs:
       - name: node version
         run: |
           node --version
-      - name: Build App [macOS]
-        if: matrix.os == 'macOS-latest'
-        run: |
-          yarn
-          npm install
-          yarn gulp dist
+      # - name: Build App [macOS]
+      #   if: matrix.os == 'macOS-latest'
+      #   run: |
+      #     yarn
+      #     npm install
+      #     yarn gulp dist
       - name: Build App [ubuntu]
         if: matrix.os == 'ubuntu-latest'
         run: |
-          yarn
           npm install
           npm run dist
-      - name: Build App [windows]
-        if: matrix.os == 'windows-latest'
-        run: |
-          yarn
-          npm install
-          yarn gulp dist --platforms=win32
-          yarn gulp dist --platforms=win64
-        env:
-          NSIS_PATH: ${{ steps.prep_nsis.outputs.nsis-path }}
+      # - name: Build App [windows]
+      #   if: matrix.os == 'windows-latest'
+      #   run: |
+      #     yarn
+      #     npm install
+      #     yarn gulp dist --platforms=win32
+      #     yarn gulp dist --platforms=win64
+      #   env:
+      #     NSIS_PATH: ${{ steps.prep_nsis.outputs.nsis-path }}
 
       - name: Upload artifacts
         uses: actions/upload-artifact@master
