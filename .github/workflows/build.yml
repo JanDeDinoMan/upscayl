@@ -66,5 +66,5 @@ jobs:
           VERSION: npm pkg get version | tr -d '"'
         with:
           name: ${{ matrix.os }}
-          path: dist/upscayl$VERSION.zip
+          path: dist/upscayl${{env.VERSION}}.zip
 
