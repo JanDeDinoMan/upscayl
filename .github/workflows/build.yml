@@ -60,10 +60,11 @@ jobs:
       #   env:
       #     NSIS_PATH: ${{ steps.prep_nsis.outputs.nsis-path }}
 
-      - name: Upload artifacts
-        uses: actions/upload-artifact@master
       - name: set version
           run: echo "VERSION=$(npm pkg get version | tr -d '\"')" >> $VERSION
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@master
         with:
           name: ${{ matrix.os }}
           path: dist/upscayl${{env.VERSION}}.zip
