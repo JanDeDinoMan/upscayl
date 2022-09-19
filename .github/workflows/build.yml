@@ -34,7 +34,7 @@ jobs:
           node-version: 16.x
       
       - name: set version
-        run: echo "VERSION=$(npm pkg get version | tr -d '\"')" >> $VERSION
+        run: echo "VERSION=$(npm pkg get version | tr -d '\"')" >> $GITHUB_ENV
 
 
       - name: yarn version
