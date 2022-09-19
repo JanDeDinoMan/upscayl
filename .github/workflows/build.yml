@@ -34,7 +34,9 @@ jobs:
           node-version: 16.x
       
       - name: set version
-        run: echo "VERSION=$(npm pkg get version | tr -d '\"')" >> $GITHUB_ENV
+        run: |
+          echo "VERSION=$(npm pkg get version | tr -d '\"')" >> $GITHUB_ENV
+          echo ${{env.VERSION}}
 
 
       - name: yarn version
@@ -68,5 +70,5 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: ${{ matrix.os }}
-          path: dist/upscayl${{env.VERSION}}.zip
+          path: dist/upscayl-${{env.VERSION}}.zip
 
