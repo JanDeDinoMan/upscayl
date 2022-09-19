@@ -64,5 +64,5 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: ${{ matrix.os }}
-          path: build
+          path: renderer/out
 
