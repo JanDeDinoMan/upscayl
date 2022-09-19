@@ -38,7 +38,7 @@
     "dist": "npm run build && DEBUG=* electron-builder",
     "dist:appimage": "npm run build && DEBUG=* electron-builder build -l AppImage",
     "dist:flatpak": "npm run build && DEBUG=* electron-builder build -l flatpak",
-    "dist:zip": "npm run build && DEBUG=* electron-builder build -l zip",
+    "dist:zip": "npm run build && DEBUG=* electron-builder build -l zip --publish never",
     "dist:dmg": "npm run build && DEBUG=* electron-builder build -m dmg",
     "dist:msi": "npm run build && DEBUG=* electron-builder build -w nsis",
     "dist:pkg": "npm run build && DEBUG=* electron-builder build -m pkg",
@@ -97,13 +97,10 @@
       ]
     },
     "linux": {
-      "publish": [
-        "github"
-      ],
       "target": [
         "AppImage",
         "flatpak",
-        "deb"
+        "zip"
       ],
       "category": "Graphics;2DGraphics;RasterGraphics;ImageProcessing;",
       "icon": "main/build/icon.png"
