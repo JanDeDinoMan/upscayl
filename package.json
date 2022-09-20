@@ -103,7 +103,16 @@
         "zip"
       ],
       "category": "Graphics;2DGraphics;RasterGraphics;ImageProcessing;",
-      "icon": "main/build/icon.png"
+      "icon": "main/build/icon.png",
+      "extraFiles": [
+        {
+          "from": "./main/build/icon.png",
+          "to": "./",
+          "filter": [
+            "**/*"
+          ]
+        }
+      ]
     },
     "win": {
       "publish": [

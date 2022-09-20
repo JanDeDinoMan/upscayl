@@ -36,8 +36,6 @@ jobs:
       - name: set version
         run: |
           echo "VERSION=$(npm pkg get version | tr -d '\"')" >> $GITHUB_ENV
-          echo $VERSION
-
 
       - name: yarn version
         run: |
