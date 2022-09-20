@@ -37,6 +37,7 @@ yarn-error.log*
 .flatpak/
 .flatpak-builder/
 build-dir/
+repo/
 
 #vscode
 .vscode/

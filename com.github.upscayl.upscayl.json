@@ -1,21 +1,30 @@
 {
-    "app-id": "com.github.upscayl.upscayl",
-    "runtime": "org.freedesktop.Platform",
-    "runtime-version": "22.08",
-    "sdk": "org.freedesktop.Sdk",
-    "base": "org.electronjs.Electron2.BaseApp",
-    "base-version": "stable",
-    "sdk-extensions": ["org.freedesktop.Sdk.Extension.node16"],
-    "command": "popcorntime-wrapper",
-    "separate-locales": false,
-    "finish-args": [
-      "--share=ipc",
-      "--share=network",
-      "--socket=x11",
-      "--device=dri",
-      "--filesystem=home"
+  "app-id": "com.github.upscayl.upscayl",
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "22.08",
+  "sdk": "org.freedesktop.Sdk",
+  "base": "org.electronjs.Electron2.BaseApp",
+  "base-version": "21.08",
+  "command": "upscayl-wrapper",
+  "separate-locales": false,
+  "finish-args": [
+    "--share=ipc",
+    "--share=network",
+    "--socket=x11",
+    "--device=dri",
+    "--filesystem=home"
     ],
     "modules": [
+      {
+        "name": "zypak",
+        "sources": [
+          {
+            "type": "git",
+            "url": "https://github.com/refi64/zypak",
+            "tag": "v2022.04"
+          }
+        ]
+      },
       {
         "name": "upscayl",
         "buildsystem": "simple",
@@ -29,13 +38,13 @@
               "x86_64"
             ],
             "url": "https://github.com/JanDeDinoMan/upscayl/releases/download/v1.5.0/Upscayl-1.5.0-linux64.zip",
-            "sha256": "161052cc0f4739849bbc1bc41eab296f9ea7a86875c3111d588260992fde3a1a"
+            "sha256": "ce576919da239f508d9273ac328bcdd5134b84eecef605b07b01010eb5ad1780"
           },
           {
             "type": "script",
             "dest-filename": "upscayl-wrapper",
             "commands": [
-              "exec /app/upscayl/upscayl"
+              "zypak-wrapper /app/upscayl/upscayl"
             ]
           }
         ],
@@ -47,9 +56,8 @@
           "install /app/upscayl/icon.png /app/share/icons/hicolor/512x512/apps/com.github.upscayl.upscayl.png",
           "install -d /app/share/applications",
           "touch com.github.upscayl.upscayl.desktop",
-          "install -Dp -m644 com.github.upscayl.upscayl.metainfo.xml /app/share/metainfo/com.github.upscayl.upscayl.metainfo.xml",
           "install -m644 com.github.upscayl.upscayl.desktop /app/share/applications/com.github.upscayl.upscayl.desktop",
-          "desktop-file-edit --set-key=Exec --set-value='upscayl-wrapper %U' --set-key=Icon --set-value='com.github.upscayl.upscayl' --set-key=Comment --set-value='TEMP' --set-key=Name --set-value='Upscayl' --set-key=MimeType --set-value='application' --set-key=StartupNotify --set-value='false' --set-key=Categories --set-value='AudioVideo;Video;Player;' --set-key=Type --set-value='Application' /app/share/applications/com.github.upscayl.upscayl.desktop"
+          "desktop-file-edit --set-key=Exec --set-value='upscayl-wrapper %U' --set-key=Icon --set-value='com.github.upscayl.upscayl' --set-key=Comment --set-value='Watch Movies and TV Shows instantly' --set-key=Name --set-value='Popcorn-Time' --set-key=MimeType --set-value='application/x-bittorrent;x-scheme-handler/magnet;' --set-key=StartupNotify --set-value='false' --set-key=Categories --set-value='AudioVideo;Video;Player;' --set-key=Type --set-value='Application' /app/share/applications/com.github.upscayl.upscayl.desktop"
         ]
       }
     ]
